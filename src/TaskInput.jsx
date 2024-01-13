@@ -1,3 +1,6 @@
+import { SlPlus } from "react-icons/sl";
+import { LuPencilLine } from "react-icons/lu";
+import { MdOutlineCancel } from "react-icons/md";
 import PropTypes from "prop-types";
 
 const TaskInput = ({
@@ -22,11 +25,11 @@ const TaskInput = ({
         className={editIndex !== null ? "edit-button" : "add-button"}
         onClick={onSubmit}
       >
-        {editIndex !== null ? "Update" : "Add"}
+        {editIndex !== null ? <LuPencilLine /> : <SlPlus />}
       </button>
       {editIndex !== null && (
         <button className="cancel-button" onClick={cancelEdit}>
-          Cancel
+          <MdOutlineCancel />
         </button>
       )}
     </div>
