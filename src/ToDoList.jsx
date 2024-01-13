@@ -103,6 +103,7 @@ export default function ToDoList() {
         />
         <TaskList
           tasks={tasks}
+          setTasks={setTasks}
           startEditing={startEditing}
           deleteTask={deleteTask}
           moveTaskUp={moveTaskUp}
