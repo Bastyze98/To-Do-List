@@ -1,6 +1,6 @@
-import { SlPlus } from "react-icons/sl";
+import { ImCancelCircle } from "react-icons/im";
 import { LuPencilLine } from "react-icons/lu";
-import { MdOutlineCancel } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
 import PropTypes from "prop-types";
 
 const TaskInput = ({
@@ -12,7 +12,7 @@ const TaskInput = ({
   cancelEdit,
 }) => {
   return (
-    <div>
+    <div className="input-add-update-cancel">
       <input
         type="text"
         placeholder="Enter a task..."
@@ -21,17 +21,19 @@ const TaskInput = ({
         onKeyDown={onKeyDown}
         className={editIndex !== null ? "edit-mode" : "add-mode"}
       />
-      <button
-        className={editIndex !== null ? "edit-button" : "add-button"}
-        onClick={onSubmit}
-      >
-        {editIndex !== null ? <LuPencilLine /> : <SlPlus />}
-      </button>
-      {editIndex !== null && (
-        <button className="cancel-button" onClick={cancelEdit}>
-          <MdOutlineCancel />
+      <div className="update-cancel">
+        <button
+          className={editIndex !== null ? "btn edit-button" : "btn add-button"}
+          onClick={onSubmit}
+        >
+          {editIndex !== null ? <LuPencilLine /> : <IoMdAdd />}
         </button>
-      )}
+        {editIndex !== null && (
+          <button className="btn cancel-button" onClick={cancelEdit}>
+            <ImCancelCircle />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

@@ -16,19 +16,31 @@ const TaskList = ({
       {tasks.map((task, index) => (
         <li key={index}>
           <div className="arrows">
-            <button className="move-button" onClick={() => moveTaskUp(index)}>
+            <button
+              className="btn move-button"
+              onClick={() => moveTaskUp(index)}
+            >
               <SlArrowUp className="arrow-icon" />
             </button>
-            <button className="move-button" onClick={() => moveTaskDown(index)}>
+            <button
+              className="btn move-button"
+              onClick={() => moveTaskDown(index)}
+            >
               <SlArrowDown className="arrow-icon" />
             </button>
           </div>
           <span className="text">{task}</span>
           <div className="edit-delete">
-            <button className="edit-button" onClick={() => startEditing(index)}>
+            <button
+              className="btn edit-button"
+              onClick={() => startEditing(index)}
+            >
               <LuPencilLine />
             </button>
-            <button className="delete-button" onClick={() => deleteTask(index)}>
+            <button
+              className="btn delete-button"
+              onClick={() => deleteTask(index)}
+            >
               <FaRegTrashCan />
             </button>
           </div>

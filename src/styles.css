@@ -4,28 +4,32 @@ body {
 
 .to-do-list {
   font-family: Arial, sans-serif;
-  text-align: center;
-  margin-top: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 5rem;
   color: white;
 }
 
-button {
-  font-size: 1.7rem;
-  font-weight: bold;
-  /* padding: 10px 20px; */
+.btn {
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
   transition: background-color 0.5s ease;
-  /* margin-left: 10px; */
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .add-button {
@@ -46,6 +50,8 @@ button {
 
 .move-button {
   background-color: hsl(207, 90%, 64%);
+  /* background-color: #d9d9d9; */
+  border-radius: 50%;
 }
 
 .move-button:hover {
@@ -81,12 +87,25 @@ button {
   font-size: 1.2rem;
 }
 
+.edit-delete {
+  display: flex;
+  gap: 5px;
+}
+
 input[type="text"] {
   font-size: 1.6rem;
   padding: 10px;
   border: 2px solid hsla(0, 0%, 80%, 0.5);
   border-radius: 5px;
   color: hsla(0, 0%, 0%, 0.5);
+}
+
+.add-button,
+.edit-button,
+.cancel-button,
+.delete-button {
+  font-size: 1.6rem;
+  padding: 10px;
 }
 
 ol {
@@ -100,29 +119,39 @@ ol {
 li {
   display: flex;
   justify-content: space-between;
-  gap: 50px;
-  align-items: center;
   font-size: 2rem;
   font-weight: bold;
-  padding: 15px;
   background-color: hsl(0, 0%, 97%);
   border: 3px solid hsla(0, 0%, 85%, 0.75);
-  border-radius: 6px;
+  gap: 50px;
+  align-items: center;
+  padding: 15px;
+  border-radius: 7px;
+  position: relative;
 }
 
-.arrows {
+li::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 70px;
+  width: 2px;
+  background-color: black;
+}
+.text {
+  flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  align-items: center;
 }
 
-.arrow-icon {
-  color: black;
+.input-add-update-cancel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.delete-button,
-.move-button {
-  padding: 8px 12px;
-  font-size: 1.4rem;
-  margin-left: 10px;
+.update-cancel {
+  display: flex;
+  gap: 10px;
 }
