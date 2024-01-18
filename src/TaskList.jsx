@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { SlArrowUp } from "react-icons/sl";
 import { SlArrowDown } from "react-icons/sl";
 import { LuPencilLine } from "react-icons/lu";
@@ -15,12 +15,41 @@ const TaskList = ({
 }) => {
   const dragPerson = useRef(0);
   const draggedOverPerson = useRef(0);
-  function handleSort() {
+
+  const [selectedTasks, setSelectedTasks] = useState([]);
+
+  function toggleTaskSelection(index) {
+    setSelectedTasks((prevTask) => {
+      const isSelected = prevTask.includes(index);
+      if (isSelected) {
+        return prevTask.filter((selected) => selected !== index);
+      } else {
+        return [...prevTask, index];
+      }
+    });
+  }
+
+  function deleteSelectedItems() {
+    const updatedTasks = tasks.filter(
+      (_, index) => !selectedTasks.includes(index)
+    );
+    setTasks(updatedTasks);
+    setSelectedTasks([]);
+  }
+
+  function handleSort(e) {
+    e.preventDefault();
+
     const tasksClone = [...tasks];
     const temp = tasksClone[dragPerson.current];
     tasksClone[dragPerson.current] = tasksClone[draggedOverPerson.current];
     tasksClone[draggedOverPerson.current] = temp;
     setTasks(tasksClone);
+  }
+
+  function deleteAllTasks() {
+    setTasks([]);
+    setSelectedTasks([]);
   }
 
   return (
@@ -40,16 +69,25 @@ const TaskList = ({
           }}
           onDragEnd={handleSort}
         >
+          <input
+            type="checkbox"
+            checked={selectedTasks.includes(index)}
+            onChange={() => toggleTaskSelection(index)}
+          />
           <div className="arrows">
             <button
               className="btn move-button"
-              onClick={() => moveTaskUp(index)}
+              onClick={() => {
+                moveTaskUp(index);
+              }}
             >
               <SlArrowUp className="arrow-icon" />
             </button>
             <button
               className="btn move-button"
-              onClick={() => moveTaskDown(index)}
+              onClick={() => {
+                moveTaskDown(index);
+              }}
             >
               <SlArrowDown className="arrow-icon" />
             </button>
@@ -58,26 +96,44 @@ const TaskList = ({
           <div className="edit-delete">
             <button
               className="btn edit-button"
-              onClick={() => startEditing(index)}
+              onClick={() => {
+                startEditing(index);
+              }}
             >
               <LuPencilLine />
             </button>
             <button
               className="btn delete-button"
-              onClick={() => deleteTask(index)}
+              onClick={() => {
+                deleteTask(index);
+              }}
             >
               <FaRegTrashCan />
             </button>
           </div>
         </li>
       ))}
+      {tasks.length > 0 && (
+        <button
+          className="btn delete-button"
+          onClick={deleteAllTasks}
+          disabled={tasks.length === 0}
+        >
+          Delete All
+        </button>
+      )}
+      {selectedTasks.length > 0 && (
+        <button className="btn delete-button" onClick={deleteSelectedItems}>
+          Delete Selected Items
+        </button>
+      )}
     </ol>
   );
 };
 
 TaskList.propTypes = {
   tasks: PropTypes.array.isRequired,
-  setTasks: PropTypes.array.func.isRequired,
+  setTasks: PropTypes.func.isRequired,
   startEditing: PropTypes.func.isRequired,
   deleteTask: PropTypes.func.isRequired,
   moveTaskUp: PropTypes.func.isRequired,

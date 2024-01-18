@@ -31,7 +31,7 @@ export default function ToDoList() {
   function deleteTask(index) {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
-    setEditIndex(null); // Clear edit mode
+    setEditIndex(null);
   }
 
   function moveTaskUp(index) {
@@ -57,7 +57,7 @@ export default function ToDoList() {
       ];
 
       setTasks(updatedTasks);
-      setEditIndex(null); // Clear edit mode
+      setEditIndex(null);
     }
   }
 
@@ -77,8 +77,19 @@ export default function ToDoList() {
   }
 
   function handleInputKeyDown(e) {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && editIndex === null) {
       addTask();
+    }
+    if (e.key === "Enter" && editIndex !== null) {
+      const updatedTasks = [...tasks];
+      updatedTasks[editIndex] = newTask;
+      setTasks(updatedTasks);
+      setEditIndex(null);
+      setNewTask("");
+    }
+
+    if (e.key === "Escape" && editIndex !== null) {
+      cancelEdit();
     }
   }
 
