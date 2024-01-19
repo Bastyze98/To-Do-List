@@ -3,6 +3,8 @@ import { SlArrowUp } from "react-icons/sl";
 import { SlArrowDown } from "react-icons/sl";
 import { LuPencilLine } from "react-icons/lu";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { IoSkullOutline } from "react-icons/io5";
+
 import PropTypes from "prop-types";
 
 const TaskList = ({
@@ -73,6 +75,7 @@ const TaskList = ({
             type="checkbox"
             checked={selectedTasks.includes(index)}
             onChange={() => toggleTaskSelection(index)}
+            onClick={(e) => e.stopPropagation()}
           />
           <div className="arrows">
             <button
@@ -113,18 +116,18 @@ const TaskList = ({
           </div>
         </li>
       ))}
-      {tasks.length > 0 && (
+      {selectedTasks.length > 0 && (
+        <button className="btn delete-button" onClick={deleteSelectedItems}>
+          Delete Selected Items
+        </button>
+      )}
+      {tasks.length > 1 && (
         <button
           className="btn delete-button"
           onClick={deleteAllTasks}
           disabled={tasks.length === 0}
         >
-          Delete All
-        </button>
-      )}
-      {selectedTasks.length > 0 && (
-        <button className="btn delete-button" onClick={deleteSelectedItems}>
-          Delete Selected Items
+          <IoSkullOutline />
         </button>
       )}
     </ol>
