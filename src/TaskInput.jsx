@@ -12,7 +12,7 @@ const TaskInput = ({
   cancelEdit,
 }) => {
   return (
-    <div className="input-add-update-cancel">
+    <div className="input-buttons">
       <input
         type="text"
         placeholder="Enter a task..."

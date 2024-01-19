@@ -1,9 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { SlArrowUp } from "react-icons/sl";
 import { SlArrowDown } from "react-icons/sl";
 import { LuPencilLine } from "react-icons/lu";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { IoSkullOutline } from "react-icons/io5";
 
 import PropTypes from "prop-types";
 
@@ -18,26 +17,26 @@ const TaskList = ({
   const dragPerson = useRef(0);
   const draggedOverPerson = useRef(0);
 
-  const [selectedTasks, setSelectedTasks] = useState([]);
+  // const [selectedTasks, setSelectedTasks] = useState([]);
 
-  function toggleTaskSelection(index) {
-    setSelectedTasks((prevTask) => {
-      const isSelected = prevTask.includes(index);
-      if (isSelected) {
-        return prevTask.filter((selected) => selected !== index);
-      } else {
-        return [...prevTask, index];
-      }
-    });
-  }
+  // function toggleTaskSelection(index) {
+  //   setSelectedTasks((prevTask) => {
+  //     const isSelected = prevTask.includes(index);
+  //     if (isSelected) {
+  //       return prevTask.filter((selected) => selected !== index);
+  //     } else {
+  //       return [...prevTask, index];
+  //     }
+  //   });
+  // }
 
-  function deleteSelectedItems() {
-    const updatedTasks = tasks.filter(
-      (_, index) => !selectedTasks.includes(index)
-    );
-    setTasks(updatedTasks);
-    setSelectedTasks([]);
-  }
+  // function deleteSelectedItems() {
+  //   const updatedTasks = tasks.filter(
+  //     (_, index) => !selectedTasks.includes(index)
+  //   );
+  //   setTasks(updatedTasks);
+  //   setSelectedTasks([]);
+  // }
 
   function handleSort(e) {
     e.preventDefault();
@@ -49,10 +48,10 @@ const TaskList = ({
     setTasks(tasksClone);
   }
 
-  function deleteAllTasks() {
-    setTasks([]);
-    setSelectedTasks([]);
-  }
+  // function deleteAllTasks() {
+  //   setTasks([]);
+  //   setSelectedTasks([]);
+  // }
 
   return (
     <ol>
@@ -71,12 +70,12 @@ const TaskList = ({
           }}
           onDragEnd={handleSort}
         >
-          <input
+          {/* <input
             type="checkbox"
             checked={selectedTasks.includes(index)}
             onChange={() => toggleTaskSelection(index)}
             onClick={(e) => e.stopPropagation()}
-          />
+          /> */}
           <div className="arrows">
             <button
               className="btn move-button"
@@ -116,7 +115,7 @@ const TaskList = ({
           </div>
         </li>
       ))}
-      {selectedTasks.length > 0 && (
+      {/* {selectedTasks.length > 0 && (
         <button className="btn delete-button" onClick={deleteSelectedItems}>
           Delete Selected Items
         </button>
@@ -129,7 +128,7 @@ const TaskList = ({
         >
           <IoSkullOutline />
         </button>
-      )}
+      )} */}
     </ol>
   );
 };
