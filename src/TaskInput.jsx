@@ -1,6 +1,7 @@
-import { ImCancelCircle } from "react-icons/im";
 import { LuPencilLine } from "react-icons/lu";
 import { IoMdAdd } from "react-icons/io";
+import { IoIosUndo } from "react-icons/io";
+
 import PropTypes from "prop-types";
 
 const TaskInput = ({
@@ -30,7 +31,7 @@ const TaskInput = ({
         </button>
         {editIndex !== null && (
           <button className="btn cancel-button" onClick={cancelEdit}>
-            <ImCancelCircle />
+            <IoIosUndo />
           </button>
         )}
       </div>

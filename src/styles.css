@@ -2,19 +2,17 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #282c34;
   color: #fff;
-  margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 .to-do-list {
+  display: flex;
+  flex-direction: column;
   background-color: #39424e;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 400px;
+  padding: 50px;
 }
 
 h1 {
@@ -43,12 +41,22 @@ h1 {
   padding: 8px;
 }
 
+.move-button {
+  border-radius: 50%;
+}
+
+.arrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .add-button {
   background-color: #61dafb;
 }
 
 .add-button:hover {
-  background-color: #4fa3d1;
+  background-color: #4eaec9;
 }
 
 .delete-button {
@@ -56,12 +64,12 @@ h1 {
 }
 
 .delete-button:hover {
-  background-color: #d13c3c;
+  background-color: #cc4b4b;
 }
 
 .move-button {
   background-color: #ffbf3b;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .move-button:hover {
@@ -69,19 +77,20 @@ h1 {
 }
 
 .edit-button {
-  background-color: hsl(240, 50%, 50%);
+  background-color: #4040bf;
 }
 
 .edit-button:hover {
-  background-color: hsl(240, 50%, 40%);
+  background-color: #333399;
 }
 
 .cancel-button {
-  background-color: #757575;
+  background-color: #cccccc;
+  color: #333333;
 }
 
 .cancel-button:hover {
-  background-color: #616161;
+  background-color: #aaaaaa;
 }
 
 .edit-mode:focus {
@@ -136,8 +145,6 @@ li {
   padding: 15px;
   border-radius: 10px;
   position: relative;
-  word-break: break-word;
-  white-space: pre-wrap;
   transition: all 0.3s ease-in-out;
 }
 
@@ -156,11 +163,10 @@ li:hover {
   background-color: #c5c5c5;
 }
 
-.text {
+.text-title {
   flex-grow: 1;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   overflow: hidden;
   text-overflow: ellipsis;
   color: grey;
@@ -178,9 +184,3 @@ li:hover {
   display: flex;
   gap: 6px;
 }
-
-/* .move-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
