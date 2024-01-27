@@ -1,4 +1,4 @@
-import ToDoList from "./ToDoList";
+import ToDoList from "../ToDoList";
 
 export default function App() {
   return (

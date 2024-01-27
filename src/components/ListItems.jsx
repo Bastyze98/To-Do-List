@@ -1,10 +1,10 @@
-import { LuPencilLine } from "react-icons/lu";
-import { FaRegTrashCan } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
-import { Tooltip } from "react-tooltip";
+import { LuPencilLine } from "react-icons/lu";
+import { FaRegTrashCan } from "react-icons/fa6";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { Tooltip } from "react-tooltip";
 import PropTypes from "prop-types";
 
 export default function ListItems({
@@ -22,6 +22,10 @@ export default function ListItems({
     transform: CSS.Transform.toString(transform),
     transition,
   };
+
+  function handleButtonClick(e) {
+    e.stopPropagation();
+  }
 
   return (
     <div {...attributes} {...listeners} ref={setNodeRef} style={style}>
@@ -60,7 +64,8 @@ export default function ListItems({
         <div className="edit-delete">
           <button
             className="btn edit-button"
-            onClick={() => {
+            onClick={(e) => {
+              handleButtonClick(e);
               startEditing(index);
             }}
           >
@@ -68,7 +73,8 @@ export default function ListItems({
           </button>
           <button
             className="btn delete-button"
-            onClick={() => {
+            onClick={(e) => {
+              handleButtonClick(e);
               deleteTask(index);
             }}
           >

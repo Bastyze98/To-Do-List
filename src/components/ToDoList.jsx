@@ -1,7 +1,7 @@
+import { useTaskFunctions } from "./hooks/TaskFunctions";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
-import { useTaskFunctions } from "./TaskFunctions";
-import "./styles.css";
+import "../styles/styles.css";
 
 export default function ToDoList() {
   const {
