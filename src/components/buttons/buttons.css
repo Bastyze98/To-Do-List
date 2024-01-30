@@ -1,0 +1,28 @@
+.redirect {
+  margin-top: 15px;
+  padding: 0.9rem 1.8rem;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  border-radius: 12px;
+  background-color: #57c4e2;
+
+  color: #ffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.25);
+}
+
+.redirect:hover {
+  background: linear-gradient(45deg, #ffa500, #ff5733);
+  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.55);
+  transform: translateY(-1px);
+  color: #ffff;
+}
+
+.redirect:active {
+  transform: translateY(0);
+  box-shadow: none;
+}

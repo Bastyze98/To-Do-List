@@ -1,6 +1,7 @@
 import { useTaskFunctions } from "./hooks/TaskFunctions";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
+import ButtonRedirect from "./buttons/ButtonRedirect";
 import "../styles/styles.css";
 
 export default function ToDoList() {
@@ -23,7 +24,9 @@ export default function ToDoList() {
   return (
     <>
       <div className="to-do-list">
-        <h1>To-Do-List</h1>
+        <div className="title-btn-redirect">
+          <h1 className="title">To-Do-List</h1>
+        </div>
         <TaskInput
           value={newTask}
           onChange={handleInputChange}
@@ -44,6 +47,7 @@ export default function ToDoList() {
           moveTaskDown={moveTaskDown}
         />
       </div>
+      <ButtonRedirect />
     </>
   );
 }

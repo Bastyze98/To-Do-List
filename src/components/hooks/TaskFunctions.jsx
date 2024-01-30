@@ -25,8 +25,7 @@ export function useTaskFunctions() {
     }
   }
 
-  function deleteTask(e, index) {
-    e.stopPropagation();
+  function deleteTask(index) {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
     setEditIndex(null);
@@ -58,8 +57,7 @@ export function useTaskFunctions() {
     }
   }
 
-  function startEditing(e, index) {
-    e.stopPropagation();
+  function startEditing(index) {
     setEditIndex(index);
     setNewTask(tasks[index]);
   }
