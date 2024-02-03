@@ -1,5 +1,14 @@
-import "./buttons.css";
+import "./button.css";
+import { Link } from "react-router-dom";
 
-export default function ButtonRedirect() {
-  return <button className="redirect">REDIRECT</button>;
+function ButtonRedirect() {
+  return (
+    <div className="stylish-container">
+      <Link className="stylish-link" to="/TanStackTable">
+        REDIRECT
+      </Link>
+    </div>
+  );
 }
+
+export default ButtonRedirect;
