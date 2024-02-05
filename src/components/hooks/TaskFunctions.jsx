@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useToastFunctions } from "./ToastFunctions";
 
 export function useTaskFunctions() {
   const [tasks, setTasks] = useState(() => {
@@ -14,6 +15,15 @@ export function useTaskFunctions() {
     localStorage.setItem("ITEMS", JSON.stringify(tasks));
   }, [tasks]);
 
+  const {
+    toastAddedTask,
+    toastDeletedTask,
+    toastMoveTaskUp,
+    toastMoveTaskDown,
+    toastEditTask,
+    toastCancelEdit,
+  } = useToastFunctions();
+
   function handleInputChange(event) {
     setNewTask(event.target.value);
   }
@@ -22,6 +32,7 @@ export function useTaskFunctions() {
     if (newTask.trim().toLowerCase() !== "") {
       setTasks((t) => [...t, newTask]);
       setNewTask("");
+      toastAddedTask();
     }
   }
 
@@ -29,6 +40,7 @@ export function useTaskFunctions() {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
     setEditIndex(null);
+    toastDeletedTask();
   }
 
   function moveTaskUp(index) {
@@ -40,6 +52,7 @@ export function useTaskFunctions() {
       ];
       setTasks(updatedTasks);
       setEditIndex(null);
+      toastMoveTaskUp();
     }
   }
 
@@ -54,6 +67,7 @@ export function useTaskFunctions() {
 
       setTasks(updatedTasks);
       setEditIndex(null);
+      toastMoveTaskDown();
     }
   }
 
@@ -69,6 +83,7 @@ export function useTaskFunctions() {
       setTasks(updatedTasks);
       setNewTask("");
       setEditIndex(null);
+      toastEditTask();
     }
   }
 
@@ -77,11 +92,7 @@ export function useTaskFunctions() {
       addTask();
     }
     if (e.key === "Enter" && editIndex !== null) {
-      const updatedTasks = [...tasks];
-      updatedTasks[editIndex] = newTask;
-      setTasks(updatedTasks);
-      setEditIndex(null);
-      setNewTask("");
+      updateTask();
     }
 
     if (e.key === "Escape" && editIndex !== null) {
@@ -92,6 +103,7 @@ export function useTaskFunctions() {
   function cancelEdit() {
     setNewTask("");
     setEditIndex(null);
+    toastCancelEdit();
   }
 
   return {

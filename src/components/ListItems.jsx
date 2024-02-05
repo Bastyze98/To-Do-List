@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 export default function ListItems({
   index,
   task,
+  tasks,
   moveTaskUp,
   moveTaskDown,
   startEditing,
@@ -16,26 +17,34 @@ export default function ListItems({
   return (
     <li>
       <div className="arrows">
-        <button
-          className="btn move-button"
-          onClick={() => {
-            moveTaskUp(index);
-          }}
-        >
-          <div className="arrow-icon">
-            <FaArrowUp />
-          </div>
-        </button>
-        <button
-          className="btn move-button"
-          onClick={() => {
-            moveTaskDown(index);
-          }}
-        >
-          <div className="arrow-icon">
-            <FaArrowDown />
-          </div>
-        </button>
+        {index > 0 ? (
+          <button
+            className="btn move-button"
+            onClick={() => {
+              moveTaskUp(index);
+            }}
+          >
+            <div className="arrow-icon">
+              <FaArrowUp />
+            </div>
+          </button>
+        ) : (
+          ""
+        )}
+        {index < tasks.length - 1 ? (
+          <button
+            className="btn move-button"
+            onClick={() => {
+              moveTaskDown(index);
+            }}
+          >
+            <div className="arrow-icon">
+              <FaArrowDown />
+            </div>
+          </button>
+        ) : (
+          ""
+        )}
       </div>
       <span
         className="text-title"
@@ -71,6 +80,7 @@ export default function ListItems({
 ListItems.propTypes = {
   index: PropTypes.number.isRequired,
   task: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
   moveTaskUp: PropTypes.func.isRequired,
   moveTaskDown: PropTypes.func.isRequired,
   startEditing: PropTypes.func.isRequired,

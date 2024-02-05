@@ -16,6 +16,7 @@ export default function TaskList({
           key={index}
           index={index}
           task={task}
+          tasks={tasks}
           setTasks={setTasks}
           startEditing={startEditing}
           deleteTask={deleteTask}
