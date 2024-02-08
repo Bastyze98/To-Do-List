@@ -15,6 +15,7 @@ const TaskInput = ({
   return (
     <div className="input-buttons">
       <input
+        id="taskInput"
         type="text"
         placeholder="Enter a task..."
         value={value}

@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-#root {
-  margin-top: 50px;
-}
-
 body {
   font-family: "Roboto", sans-serif;
   background-color: #282c34;
@@ -123,7 +119,7 @@ body {
   gap: 6px;
 }
 
-input[type="text"] {
+#taskInput {
   font-size: 1.6rem;
   padding: 12px;
   border: 2px solid rgba(255, 255, 255, 0.5);

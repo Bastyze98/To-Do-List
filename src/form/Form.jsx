@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
-import "./formStyles.css";
+import "./form.css";
 
 function Form() {
   const [values, setValues] = useState({
@@ -25,19 +25,25 @@ function Form() {
       name: "username",
       type: "text",
       placeholder: "Username",
+      errorMessage:
+        "Username should be 3-16 characters and shouldn't include any special character!",
       label: "Username",
+      pattern: "^[A-Za-z0-9]{3,16}$",
+      required: true,
     },
     {
       id: 2,
       name: "email",
-      type: "text",
+      type: "email",
       placeholder: "Email",
+      errorMessage: "It should be a valid email adress!",
       label: "Email",
+      required: true,
     },
     {
       id: 3,
       name: "birthday",
-      type: "text",
+      type: "date",
       placeholder: "Birthday",
       label: "Birthday",
     },
@@ -46,22 +52,31 @@ function Form() {
       name: "password",
       type: "password",
       placeholder: "Password",
+      errorMessage:
+        "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
       label: "Password",
+      pattern:
+        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
+      required: true,
     },
     {
       id: 5,
       name: "confirmPassword",
       type: "password",
       placeholder: "Confirm Password",
+      errorMessage: "Passwords don't match!",
       label: "Confirm Password",
+      pattern: values.password,
+      required: true,
     },
   ];
 
   console.log(values);
 
   return (
-    <div className="app">
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        <h1 className="register-heading">Register</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -70,6 +85,7 @@ function Form() {
             onChange={onChange}
           />
         ))}
+        <button className="register-button">Submit</button>
       </form>
     </div>
   );
