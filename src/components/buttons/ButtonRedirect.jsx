@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function ButtonRedirect() {
   return (
     <div className="stylish-container">
-      <Link className="stylish-link" to="/TanStackTable">
+      <Link className="stylish-link" to="/Form">
         REDIRECT
       </Link>
     </div>

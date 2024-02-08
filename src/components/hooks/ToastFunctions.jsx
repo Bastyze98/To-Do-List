@@ -29,7 +29,7 @@ export function useToastFunctions() {
   }
 
   function toastMoveTaskUp() {
-    toast.warn("Task Moved Up!", {
+    toast.info("Task Moved Up!", {
       position: "top-right",
       autoClose: 2500,
       hideProgressBar: false,
@@ -42,7 +42,7 @@ export function useToastFunctions() {
   }
 
   function toastMoveTaskDown() {
-    toast.warn("Task Moved Down!", {
+    toast.info("Task Moved Down!", {
       position: "top-right",
       autoClose: 2500,
       hideProgressBar: false,
@@ -55,7 +55,7 @@ export function useToastFunctions() {
   }
 
   function toastEditTask() {
-    toast.info("Task Edited!", {
+    toast.warn("Task Edited!", {
       position: "top-right",
       autoClose: 2500,
       hideProgressBar: false,

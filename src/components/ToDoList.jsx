@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTaskFunctions } from "./hooks/TaskFunctions";
 import ButtonRedirect from "./buttons/ButtonRedirect";
-import TanStackTable from "../table/TanStackTable";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
+import Form from "../form/Form";
 import "../styles/styles.css";
 
 function ToDoListPage() {
@@ -57,7 +57,7 @@ export default function ToDoList() {
     <Router>
       <Routes>
         <Route path="/" element={<ToDoListPage />} />
-        <Route path="/TanStackTable" element={<TanStackTable />} />
+        <Route path="/Form" element={<Form />} />
       </Routes>
     </Router>
   );
