@@ -71,8 +71,6 @@ function Form() {
     },
   ];
 
-  console.log(values);
-
   return (
     <div className="form-container">
       <form className="register-form" onSubmit={handleSubmit}>

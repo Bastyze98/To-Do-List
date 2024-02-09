@@ -24,20 +24,35 @@
 }
 
 .register-heading {
+  font-size: 2rem;
   color: rgb(77, 1, 77);
+  /* color: rebeccapurple; */
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "Pacifico", cursive;
 }
 
 .register-button {
   width: 100%;
   height: 50px;
-  padding: 10px;
+  padding: 0 20px;
   border: none;
   background-color: rebeccapurple;
   color: white;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.2rem;
   cursor: pointer;
   margin-top: 15px;
   margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: rebeccapurple;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./FormInput.css";
+import PropTypes from "prop-types";
 
 const FormInput = (props) => {
   const [focused, setFocused] = useState(false);
-  const { label, errorMessage, onChange, id, ...inputProps } = props;
+  const { label, errorMessage, onChange, ...inputProps } = props;
 
   const handleFocus = () => {
     setFocused(true);
@@ -28,3 +29,9 @@ const FormInput = (props) => {
 };
 
 export default FormInput;
+
+FormInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
