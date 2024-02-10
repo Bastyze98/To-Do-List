@@ -3,6 +3,7 @@ import { FaArrowDown } from "react-icons/fa";
 import { LuPencilLine } from "react-icons/lu";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { Tooltip } from "react-tooltip";
+import ButtonX from "./buttons/buttonX";
 import PropTypes from "prop-types";
 
 export default function ListItems({
@@ -29,7 +30,7 @@ export default function ListItems({
             </div>
           </button>
         ) : (
-          ""
+          <ButtonX direction="up" />
         )}
         {index < tasks.length - 1 ? (
           <button
@@ -43,7 +44,7 @@ export default function ListItems({
             </div>
           </button>
         ) : (
-          ""
+          <ButtonX direction="down" />
         )}
       </div>
       <span

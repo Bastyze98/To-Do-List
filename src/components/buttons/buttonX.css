@@ -1,0 +1,13 @@
+.button-X {
+  color: #fff;
+  background-color: #ff5e5e;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: background-color 0.5s ease;
+  border-radius: 50%;
+}
+
+.button-X:hover {
+  background-color: #cc4b4b;
+}
