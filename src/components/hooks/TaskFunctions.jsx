@@ -106,6 +106,10 @@ export function useTaskFunctions() {
     toastCancelEdit();
   }
 
+  function deleteAllTasks() {
+    setTasks([]);
+  }
+
   return {
     tasks,
     setTasks,
@@ -120,5 +124,6 @@ export function useTaskFunctions() {
     updateTask,
     handleInputKeyDown,
     cancelEdit,
+    deleteAllTasks,
   };
 }

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTaskFunctions } from "./hooks/TaskFunctions";
 import ButtonRedirect from "./buttons/ButtonRedirect";
+import DeleteAllTasks from "./buttons/DeleteAllTasks";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
 import Form from "../form/Form";
@@ -21,6 +22,7 @@ function ToDoListPage() {
     updateTask,
     handleInputKeyDown,
     cancelEdit,
+    deleteAllTasks,
   } = useTaskFunctions();
 
   return (
@@ -47,6 +49,7 @@ function ToDoListPage() {
         moveTaskUp={moveTaskUp}
         moveTaskDown={moveTaskDown}
       />
+      <DeleteAllTasks deleteAllTasks={deleteAllTasks} tasks={tasks} />
       <ButtonRedirect />
     </div>
   );
