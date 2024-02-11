@@ -1,7 +1,7 @@
+import DeleteAllTasks from "./buttons/DeleteAllTasks";
 import { LuPencilLine } from "react-icons/lu";
-import { IoMdAdd } from "react-icons/io";
 import { IoIosUndo } from "react-icons/io";
-
+import { IoMdAdd } from "react-icons/io";
 import PropTypes from "prop-types";
 
 const TaskInput = ({
@@ -11,9 +11,12 @@ const TaskInput = ({
   onSubmit,
   editIndex,
   cancelEdit,
+  tasks,
+  deleteAllTasks,
 }) => {
   return (
     <div className="input-buttons">
+      <DeleteAllTasks tasks={tasks} deleteAllTasks={deleteAllTasks} />
       <input
         id="taskInput"
         type="text"
@@ -41,10 +44,12 @@ const TaskInput = ({
 };
 
 TaskInput.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  deleteAllTasks: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
   editIndex: PropTypes.number,
   cancelEdit: PropTypes.func,
 };

@@ -1,7 +1,6 @@
 .delete-all-container {
   display: flex;
   justify-content: center;
-  margin-top: 18px;
 }
 
 .delete-all-tasks {
