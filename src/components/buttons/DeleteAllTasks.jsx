@@ -1,5 +1,6 @@
 import { IoSkullOutline } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
+import PropTypes from "prop-types";
 import "./deleteAllTasks.css";
 
 const DeleteAllTasks = (props) => {
@@ -22,6 +23,11 @@ const DeleteAllTasks = (props) => {
       <Tooltip id="buttonDeleteAll" />
     </div>
   );
+};
+
+DeleteAllTasks.propTypes = {
+  tasks: PropTypes.array.isRequired,
+  deleteAllTasks: PropTypes.func.isRequired,
 };
 
 export default DeleteAllTasks;
