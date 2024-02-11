@@ -18,7 +18,6 @@ const TaskInput = ({
     <div className="input-buttons">
       <DeleteAllTasks tasks={tasks} deleteAllTasks={deleteAllTasks} />
       <input
-        id="taskInput"
         type="text"
         placeholder="Enter a task..."
         value={value}
