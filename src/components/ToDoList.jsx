@@ -50,7 +50,7 @@ function ToDoListPage() {
         moveTaskUp={moveTaskUp}
         moveTaskDown={moveTaskDown}
       />
-      <ButtonRedirect />
+      <ButtonRedirect name="Form" page="/Form" />
     </div>
   );
 }
