@@ -191,3 +191,9 @@ li:hover {
   display: flex;
   gap: 6px;
 }
+
+.redirect-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 24px;
+}

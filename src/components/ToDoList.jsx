@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTaskFunctions } from "./hooks/TaskFunctions";
+import { useEffect } from "react";
 import ButtonRedirect from "./buttons/ButtonRedirect";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
+import Table from "./table/Table";
 import Form from "../form/Form";
 import "../styles/styles.css";
-import { useEffect } from "react";
 
 function ToDoListPage() {
   const {
@@ -55,7 +56,10 @@ function ToDoListPage() {
         moveTaskUp={moveTaskUp}
         moveTaskDown={moveTaskDown}
       />
-      <ButtonRedirect name="Form" page="/Form" />
+      <div className="redirect-container">
+        <ButtonRedirect name="Form" page="/Form" />
+        <ButtonRedirect name="Table" page="/Table" />
+      </div>
     </div>
   );
 }
@@ -66,6 +70,7 @@ export default function ToDoList() {
       <Routes>
         <Route path="/" element={<ToDoListPage />} />
         <Route path="/Form" element={<Form />} />
+        <Route path="/Table" element={<Table />} />
       </Routes>
     </Router>
   );
