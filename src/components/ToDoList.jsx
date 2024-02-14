@@ -5,6 +5,7 @@ import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
 import Form from "../form/Form";
 import "../styles/styles.css";
+import { useEffect } from "react";
 
 function ToDoListPage() {
   const {
@@ -23,6 +24,10 @@ function ToDoListPage() {
     cancelEdit,
     deleteAllTasks,
   } = useTaskFunctions();
+
+  useEffect(() => {
+    document.title = "To Do List";
+  }, []);
 
   return (
     <div className="to-do-list">

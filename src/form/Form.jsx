@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormInput from "./FormInput";
 import "./form.css";
 
 function Form() {
+  useEffect(() => {
+    document.title = "From Register";
+  }, []);
+
   const [values, setValues] = useState({
     username: "",
     email: "",
