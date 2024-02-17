@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import buttonStyle from "./modal.module.css";
 import styles from "./table.module.css";
+import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 import { BsFillPencilFill, BsFillTrashFill } from "react-icons/bs";
 
@@ -7,6 +9,8 @@ function Table() {
   useEffect(() => {
     document.title = "Table";
   }, []);
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className={styles["table-wrapper"]}>
@@ -30,7 +34,7 @@ function Table() {
             </td>
             <td>
               <span className={styles["actions"]}>
-                <BsFillTrashFill />
+                <BsFillTrashFill className={styles["delete-btn"]} />
                 <BsFillPencilFill />
               </span>
             </td>
@@ -45,7 +49,7 @@ function Table() {
             </td>
             <td>
               <span className={styles["actions"]}>
-                <BsFillTrashFill />
+                <BsFillTrashFill className={styles["delete-btn"]} />
                 <BsFillPencilFill />
               </span>
             </td>
@@ -60,13 +64,26 @@ function Table() {
             </td>
             <td>
               <span className={styles["actions"]}>
-                <BsFillTrashFill />
+                <BsFillTrashFill className={styles["delete-btn"]} />
                 <BsFillPencilFill />
               </span>
             </td>
           </tr>
         </tbody>
       </table>
+      <button
+        className={buttonStyle["btn-form"]}
+        onClick={() => setModalOpen(true)}
+      >
+        Add
+      </button>
+      {modalOpen && (
+        <Modal
+          closeModal={() => {
+            setModalOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -65,3 +65,16 @@
 .labelError {
   background-color: #d9534f;
 }
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions svg {
+  cursor: pointer;
+}
+
+.delete-btn {
+  color: #e10d05;
+}
