@@ -54,15 +54,15 @@
   color: white;
 }
 
-.labelDraft {
+.label-draft {
   background-color: #777;
 }
 
-.labelLive {
+.label-live {
   background-color: #42a942;
 }
 
-.labelError {
+.label-error {
   background-color: #d9534f;
 }
 
@@ -77,4 +77,15 @@
 
 .delete-btn {
   color: #e10d05;
+}
+
+.btn-form {
+  border: none;
+  background-color: #1d4ed8;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 5px 5px #ccc;
+  display: inline-block;
 }
