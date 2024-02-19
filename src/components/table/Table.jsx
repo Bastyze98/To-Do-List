@@ -25,6 +25,10 @@ function Table() {
     );
   };
 
+  const handleSubmit = (newRow) => {
+    setRows([...rows, newRow]);
+  };
+
   return (
     <div className={styles["table-wrapper"]}>
       <table className={styles["table"]}>
@@ -80,6 +84,7 @@ function Table() {
           closeModal={() => {
             setModalOpen(false);
           }}
+          onSubmit={handleSubmit}
         />
       )}
     </div>

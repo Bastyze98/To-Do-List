@@ -1,10 +1,39 @@
+import { useState } from "react";
 import styles from "./modal.module.css";
 
-function Modal({ closeModal }) {
+function Modal({ closeModal, onSubmit }) {
   const handleClick = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
+  };
+
+  const [formState, setFormState] = useState({
+    page: "",
+    description: "",
+    status: "",
+  });
+
+  const validateForm = () => {
+    if (formState.page && formState.description && formState.status) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+    onSubmit(formState);
+    closeModal();
   };
 
   return (
@@ -13,25 +42,33 @@ function Modal({ closeModal }) {
         <form>
           <div className={styles["form-group"]}>
             <label htmlFor="page">Page</label>
-            <input name="page" />
+            <input name="page" value={formState.page} onChange={handleChange} />
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="description">Description</label>
-            <textarea name="description" />
+            <textarea
+              name="description"
+              value={formState.description}
+              onChange={handleChange}
+            />
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="status">Status</label>
-            <input name="status" />
-          </div>
-          <div className={styles["form-group"]}>
-            <label htmlFor="status">Status</label>
-            <select name="status">
+            <select
+              name="status"
+              value={formState.status}
+              onChange={handleChange}
+            >
               <option value="live">Live</option>
               <option value="draft">Draft</option>
               <option value="error">Error</option>
             </select>
           </div>
-          <button type="submit" className={styles["btn"]}>
+          <button
+            type="submit"
+            className={styles["btn"]}
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </form>
