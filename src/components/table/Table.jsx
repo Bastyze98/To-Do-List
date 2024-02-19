@@ -11,11 +11,19 @@ function Table() {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const rows = [
+  const [rows, setRows] = useState([
     { page: "Page 1", description: "This is the first page", status: "live" },
     { page: "Page 2", description: "This is the second page", status: "draft" },
     { page: "Page 3", description: "This is the third page", status: "error" },
-  ];
+  ]);
+
+  const handleDeleteRow = (targetIndex) => {
+    setRows(
+      rows.filter((_, idx) => {
+        return idx !== targetIndex;
+      })
+    );
+  };
 
   return (
     <div className={styles["table-wrapper"]}>
@@ -47,7 +55,10 @@ function Table() {
                 </td>
                 <td>
                   <span className={styles["actions"]}>
-                    <BsFillTrashFill className={styles["delete-btn"]} />
+                    <BsFillTrashFill
+                      className={styles["delete-btn"]}
+                      onClick={() => handleDeleteRow(idx)}
+                    />
                     <BsFillPencilFill />
                   </span>
                 </td>
