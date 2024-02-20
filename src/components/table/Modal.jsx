@@ -16,8 +16,16 @@ function Modal({ closeModal, onSubmit }) {
 
   const validateForm = () => {
     if (formState.page && formState.description && formState.status) {
+      setErrors("");
       return true;
     } else {
+      let errorFields = [];
+      for (const [key, value] of Object.entries(formState)) {
+        if (!value) {
+          errorFields.push(key);
+        }
+      }
+      setErrors(errorFields.join(", "));
       return false;
     }
   };
@@ -35,6 +43,8 @@ function Modal({ closeModal, onSubmit }) {
     onSubmit(formState);
     closeModal();
   };
+
+  const [errors, setErrors] = useState("");
 
   return (
     <div className={styles["modal-container"]} onClick={handleClick}>
@@ -64,6 +74,9 @@ function Modal({ closeModal, onSubmit }) {
               <option value="error">Error</option>
             </select>
           </div>
+          {errors && (
+            <div className={styles["error"]}>{`Please include: ${errors}`}</div>
+          )}
           <button
             type="submit"
             className={styles["btn"]}
