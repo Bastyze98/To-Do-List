@@ -17,6 +17,8 @@ function Table() {
     { page: "Page 3", description: "This is the third page", status: "error" },
   ]);
 
+  const [rowToEdit, setRowToEdit] = useState(null);
+
   const handleDeleteRow = (targetIndex) => {
     setRows(
       rows.filter((_, idx) => {
@@ -25,8 +27,22 @@ function Table() {
     );
   };
 
+  const handleEditRow = (idx) => {
+    setRowToEdit(idx);
+
+    setModalOpen(true);
+  };
+
   const handleSubmit = (newRow) => {
-    setRows([...rows, newRow]);
+    rowToEdit === null
+      ? setRows([...rows, newRow])
+      : setRows(
+          rows.map((currRow, idx) => {
+            if (idx !== rowToEdit) return currRow;
+
+            return newRow;
+          })
+        );
   };
 
   return (
@@ -63,7 +79,7 @@ function Table() {
                       className={styles["delete-btn"]}
                       onClick={() => handleDeleteRow(idx)}
                     />
-                    <BsFillPencilFill />
+                    <BsFillPencilFill onClick={() => handleEditRow(idx)} />
                   </span>
                 </td>
               </tr>
@@ -83,8 +99,10 @@ function Table() {
         <Modal
           closeModal={() => {
             setModalOpen(false);
+            setRowToEdit(null);
           }}
           onSubmit={handleSubmit}
+          defaultValue={rowToEdit !== null && rows[rowToEdit]}
         />
       )}
     </div>

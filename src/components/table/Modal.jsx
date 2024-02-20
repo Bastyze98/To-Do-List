@@ -1,18 +1,21 @@
 import { useState } from "react";
 import styles from "./modal.module.css";
+import PropTypes from "prop-types";
 
-function Modal({ closeModal, onSubmit }) {
+function Modal({ closeModal, onSubmit, defaultValue }) {
   const handleClick = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
   };
 
-  const [formState, setFormState] = useState({
-    page: "",
-    description: "",
-    status: "",
-  });
+  const [formState, setFormState] = useState(
+    defaultValue || {
+      page: "",
+      description: "",
+      status: "",
+    }
+  );
 
   const validateForm = () => {
     if (formState.page && formState.description && formState.status) {
@@ -91,3 +94,9 @@ function Modal({ closeModal, onSubmit }) {
 }
 
 export default Modal;
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  defaultValue: PropTypes.bool.isRequired,
+};
