@@ -55,7 +55,12 @@ function Modal({ closeModal, onSubmit, defaultValue }) {
         <form>
           <div className={styles["form-group"]}>
             <label htmlFor="page">Page</label>
-            <input name="page" value={formState.page} onChange={handleChange} />
+            <input
+              name="page"
+              value={formState.page}
+              onChange={handleChange}
+              autoComplete="off"
+            />
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="description">Description</label>
@@ -72,6 +77,7 @@ function Modal({ closeModal, onSubmit, defaultValue }) {
               value={formState.status}
               onChange={handleChange}
             >
+              <option />
               <option value="live">Live</option>
               <option value="draft">Draft</option>
               <option value="error">Error</option>

@@ -12,9 +12,7 @@ function Table() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const [rows, setRows] = useState([
-    { page: "Page 1", description: "This is the first page", status: "live" },
-    { page: "Page 2", description: "This is the second page", status: "draft" },
-    { page: "Page 3", description: "This is the third page", status: "error" },
+    { page: "[page-name]", description: "[description]", status: "error" },
   ]);
 
   const [rowToEdit, setRowToEdit] = useState(null);
