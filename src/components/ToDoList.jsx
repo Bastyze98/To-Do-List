@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTaskFunctions } from "./hooks/TaskFunctions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ButtonRedirect from "./buttons/ButtonRedirect";
 import TaskInput from "./TaskInput";
 import TaskList from "./TaskList";
 import Table from "./table/Table";
 import Form from "../form/Form";
 import "../styles/styles.css";
+import InfoModal from "./InfoModal";
 
 function ToDoListPage() {
   const {
@@ -29,6 +30,8 @@ function ToDoListPage() {
   useEffect(() => {
     document.title = "To Do List";
   }, []);
+
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div className="to-do-list">
@@ -58,8 +61,19 @@ function ToDoListPage() {
       />
       <div className="redirect-container">
         <ButtonRedirect name="Form" page="/Form" />
+        <button
+          className="info"
+          onClick={() => {
+            openModal ? setOpenModal(false) : setOpenModal(true);
+          }}
+        >
+          Info
+        </button>
         <ButtonRedirect name="Table" page="/Table" />
       </div>
+      {openModal && (
+        <InfoModal open={openModal} onClose={() => setOpenModal(false)} />
+      )}
     </div>
   );
 }
